@@ -8,7 +8,9 @@ pipeline {
         }
 
         stage('print current directory') {
-            pwd()
-        }
+            steps{
+                pwd()
+            }
+        }   
     }
 }
