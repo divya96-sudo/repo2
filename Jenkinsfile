@@ -14,9 +14,11 @@ pipeline {
         }
 
         stage('build image') {
-            sh '''docker build -t sample:latest .
-            docker tag sam asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest
-            docker push asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest'''
+            steps{
+                sh '''docker build -t sample:latest .
+                docker tag sam asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest
+                docker push asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest'''
+            }
         }       
     }
 }
