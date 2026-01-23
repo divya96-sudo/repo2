@@ -16,7 +16,7 @@ pipeline {
         stage('build image') {
             steps{
                 sh '''
-                gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://asia-south1-docker.pkg.dev
+                gcloud auth configure-docker asia-south1-docker.pkg.dev
                 docker build -t sample:latest .
                 docker tag sample:latest asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest
                 docker push asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest'''
