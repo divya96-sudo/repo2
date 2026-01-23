@@ -9,7 +9,7 @@ pipeline {
 
         stage('print current directory') {
             steps{
-                pwd()
+                sh 'pwd'
             }
         }   
     }
