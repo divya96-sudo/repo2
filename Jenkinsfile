@@ -17,10 +17,10 @@ pipeline {
             steps{
                 sh '''
                 gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://asia-south1-docker.pkg.dev
-
                 docker build -t sample:latest .
                 docker tag sample:latest asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest
-                docker push asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest'''
+                docker push asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest
+                gcloud run deploy test-service --image asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest --platform managed --region asia-south1 --allow-unauthenticated'''
             }
         }       
     }
