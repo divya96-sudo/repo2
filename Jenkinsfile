@@ -9,7 +9,7 @@ pipeline {
 
         stage('print current directory') {
             steps{
-                echo "Current directory is: ${pwd()}"
+                echo "Current directory is: ${env.WORKSPACE}"
             }
         }
 
@@ -20,7 +20,7 @@ pipeline {
                 docker build -t sample:latest .
                 docker tag sample:latest asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest
                 docker push asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest
-                gcloud run deploy test-service --image asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest --platform managed --region asia-south1 --allow-unauthenticated'''
+                # gcloud run deploy test-service --image asia-south1-docker.pkg.dev/training-2024-batch/divya-repo/sam:latest --platform managed --region asia-south1 --allow-unauthenticated'''
             }
         }       
     }
